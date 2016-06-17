@@ -1,5 +1,7 @@
 FROM php:5.6.22-fpm
 
+ENV APCU_VERSION="4.0.11"
+
 # Install other PHP modules
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -31,7 +33,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include --with-jpeg-dir
         sockets \
         exif \
     && pecl install imagick \
-    && pecl install apcu \
+    && pecl install apcu-$APCU_VERSION \
     && docker-php-ext-enable \
         imagick \
         apcu
