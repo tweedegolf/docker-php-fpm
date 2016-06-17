@@ -1,4 +1,4 @@
-FROM php:7.0.7-fpm
+FROM php:5.6.22-fpm
 
 # Install other PHP modules
 RUN apt-get update \
