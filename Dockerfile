@@ -1,4 +1,4 @@
-FROM php:5.6.22-fpm
+FROM php:5.6.23-fpm
 
 ENV APCU_VERSION="4.0.11"
 
