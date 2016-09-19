@@ -1,4 +1,4 @@
-FROM php:7.0.10-fpm
+FROM php:7.0.11-fpm
 
 # Install other PHP modules
 RUN apt-get update \
