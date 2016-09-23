@@ -2,6 +2,10 @@ FROM php:5.6.26-fpm
 
 ENV APCU_VERSION="4.0.11"
 
+RUN curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+    && echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
+    && apt-get update
+
 # Install other PHP modules
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
