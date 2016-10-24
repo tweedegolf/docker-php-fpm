@@ -1,4 +1,4 @@
-FROM php:5.6.26-fpm
+FROM php:5.6.27-fpm
 
 ENV APCU_VERSION="4.0.11"
 
@@ -12,7 +12,7 @@ RUN apt-get update \
         libjpeg62-turbo-dev \
         libfreetype6-dev \
         libpng12-dev \
-        postgresql-server-dev-9.4 \
+        postgresql-server-dev-9.5 \
         libxslt1-dev \
         libbz2-dev \
         libgmp-dev \
