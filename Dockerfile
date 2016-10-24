@@ -1,4 +1,4 @@
-FROM php:7.0.11-fpm
+FROM php:7.0.12-fpm
 
 RUN curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
@@ -10,7 +10,7 @@ RUN apt-get update \
         libjpeg62-turbo-dev \
         libfreetype6-dev \
         libpng12-dev \
-        postgresql-server-dev-9.4 \
+        postgresql-server-dev-9.5 \
         libxslt1-dev \
         libbz2-dev \
         libgmp-dev \
