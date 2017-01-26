@@ -1,8 +1,10 @@
-FROM php:7.0.14-fpm
+FROM php:7.0.15-fpm
 
 RUN curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
     && apt-get update
+
+ENV POSTGRESQL_VERSION 9.6
 
 # Install other PHP modules
 RUN apt-get update \
@@ -14,7 +16,7 @@ RUN apt-get update \
         libjpeg62-turbo-dev \
         libfreetype6-dev \
         libpng12-dev \
-        postgresql-server-dev-9.5 \
+        postgresql-server-dev-$POSTGRESQL_VERSION \
         libxslt1-dev \
         libbz2-dev \
         libgmp-dev \
