@@ -1,10 +1,10 @@
-FROM php:5.6.29-fpm
-
-ENV APCU_VERSION="4.0.11"
+FROM php:5.6.30-fpm
 
 RUN curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
     && apt-get update
+
+ENV POSTGRESQL_VERSION 9.5
 
 # Install other PHP modules
 RUN apt-get update \
@@ -16,7 +16,7 @@ RUN apt-get update \
         libjpeg62-turbo-dev \
         libfreetype6-dev \
         libpng12-dev \
-        postgresql-server-dev-9.5 \
+        postgresql-server-dev-$POSTGRESQL_VERSION \
         libxslt1-dev \
         libbz2-dev \
         libgmp-dev \
@@ -25,6 +25,9 @@ RUN apt-get update \
         libmagickwand-dev \
     && rm -rf /var/lib/apt/lists/* \
     && ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h
+
+ENV APCU_VERSION 4.0.11
+
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include --with-jpeg-dir=/usr/include \
     && docker-php-ext-install -j$(nproc) \
         gd \
